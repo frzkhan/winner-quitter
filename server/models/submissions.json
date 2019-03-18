@@ -1,0 +1,66 @@
+{
+  "name": "Submission",
+  "plural": "Submissions",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "userId": {
+      "type": "string",
+      "required": true
+    },
+    "taskId": {
+      "type": "string",
+      "required": true
+    },
+    "selected": {
+      "type": "boolean",
+      "default": false
+    },
+    "selectedDate": {
+      "type": "string",
+      "default": null
+    },
+    "delivered": {
+      "type": "boolean",
+      "default": false
+    },
+    "deliveredDate": {
+      "type": "string",
+      "default": null
+    },
+    "completed": {
+      "type": "boolean",
+      "default": false
+    },
+    "completedDate": {
+      "type": "string",
+      "default": null
+    },
+    "rated": {
+      "type": "number",
+      "default": null
+    },
+    "canceled": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "validations": [],
+  "relations": {
+    "task": {
+      "type": "belongsTo",
+      "model": "Task",
+      "foreignKey": "taskId"
+    },
+    "user": {
+      "type": "belongsTo",
+      "model": "User",
+      "foreignKey": "userId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

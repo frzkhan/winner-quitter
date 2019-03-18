@@ -1,0 +1,72 @@
+{
+  "name": "Task",
+  "plural": "Tasks",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "totalprize": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    },
+    "duration": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    },
+    "skills": {
+      "type": "string",
+      "required": true
+    },
+    "created": {
+      "type": "date",
+      "defaultFn": "now"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "submissions": {
+      "type": "hasMany",
+      "model": "Submission",
+      "foreignKey": "taskId"
+    }
+  },
+  "acls": [
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY",
+      "property": "*"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "*"
+    }
+  ],
+  "methods": {
+    "submissions": {
+      "accepts": {
+        "arg": "taskId",
+        "type": "string"
+      },
+      "returns": {
+        "arg": "users",
+        "type": "string",
+        "root": true
+      }
+    }
+  }
+}

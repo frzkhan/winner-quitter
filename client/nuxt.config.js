@@ -44,6 +44,7 @@ module.exports = {
     '@nuxtjs/axios',
   ],
   axios: {
+    baseURL: 'https://winner-quitter.herokuapp.com'
   },
   /*
   ** Build configuration

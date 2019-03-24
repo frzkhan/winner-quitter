@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="">
     <h1>{{project.name}}</h1>
-    <small>Total Prize: {{project.totalPrize}} | Duration: {{project.duration}}</small>
+    <small>Total Prize: {{project.totalprize}} | Duration: {{project.duration}}</small>
     <p>{{project.description}}</p>
     <p>Skills Required: {{project.skills}}</p>
     <br>

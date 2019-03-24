@@ -38,7 +38,7 @@
         <p> <small>{{project.created}}</small> </p>
         <p>{{project.description}}</p>
         <p> <small> Skills requried: {{project.skills || 'none'}}</small></p>
-        <p> <small>Total Prize: {{project.totalPrize}}</small> | <small>Duration: {{project.duration}} days</small> </p>
+        <p> <small>Total Prize: {{project.totalprize}}</small> | <small>Duration: {{project.duration}} days</small> </p>
         <div v-if="$store.state.user.realm == 'worker'">
           <button type="button" name="button" @click="apply(project.id)" v-if="!project.hasSelected && !project.currentApplied">Apply</button>
           <span v-if="project.hasSelected" class="badge badge-danger">Candidate has been selected for this task</span>

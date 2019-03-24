@@ -8,11 +8,20 @@
   },
   "properties": {
     "userId": {
-      "type": "object",
+      "type": "string",
       "required": true
     },
     "name": "string",
-    "skills": "string"
+    "skills": {
+      "type": "string",
+      "default": ""
+    },
+    "submissionsCount": "number",
+    "selectedCount": "number",
+    "deliveredCount": "number",
+    "canceledCount": "number",
+    "completedCount": "number",
+    "averageRating": "number"
   },
   "validations": [],
   "relations": {

@@ -5,6 +5,11 @@ module.exports = function (Profile) {
       foreignKey: 'userId',
       as: 'profile'
     })
+    app.models.User.hasMany(Profile.app.models.Submission, {
+      foreignKey: 'userId',
+      as: 'submissions'
+    })
+
     app.models.User.observe('after save', async function(ctx, next) {
       if (ctx.instance) {
         await Profile.create({

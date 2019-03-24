@@ -15,7 +15,10 @@
           <div class="row">
             <div class="col-6">
               {{sub.user.profile.name}} - {{sub.user.email}} <br>
-              {{sub.user.profile.skills}}
+              Availability: {{sub.metrics.availability}} |
+              Expert: {{sub.metrics.expert}} |
+              Interest: {{sub.metrics.interest}} |
+              Reliability: {{sub.metrics.reliability}}
             </div>
             <div class="col-6">
               <button type="button" v-if="!sub.selected && !sub.canceled " class="float-right" @click="select(sub.id)" name="button">Select</button>
@@ -52,6 +55,7 @@
 </template>
 
 <script>
+import _ from 'lodash'
 export default {
   middleware: 'axios',
   name: "project",
@@ -71,6 +75,7 @@ export default {
     if (isSelected) {
       project.submissions = submissions
     }
+    project.submissions = _.orderBy(project.submissions, ['metrics.expert', 'metrics.reliability', 'metrics.interest', 'metrics.availability'], ['desc', 'desc', 'desc', 'desc'])
     return { project }
   },
   created () {
@@ -80,7 +85,7 @@ export default {
   },
   methods: {
     async getProject (id) {
-      const project = this.$axios.$post(`/api/Tasks/submissions`, {
+      const project = await this.$axios.$post(`/api/Tasks/submissions`, {
         taskId: id
       })
       const isSelected = !!project.submissions.find(s => s.selected)

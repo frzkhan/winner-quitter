@@ -27,6 +27,7 @@
     },
     "skills": {
       "type": "string",
+      "default": "",
       "required": true
     },
     "created": {

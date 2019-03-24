@@ -12,4 +12,7 @@ export default function ({ route, redirect, $axios, store }) {
   .then(user => {
     store.commit('setUser', user)
   })
+  .catch(error => {
+    redirect('/login')
+  })
 }
